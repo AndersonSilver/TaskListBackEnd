@@ -1,6 +1,9 @@
 import express from 'express';
 import routes from './routes';
 
+// Importando a conexão do banco de dados
+import './database';
+
 class App{
     constructor(){
         this.server = express();
@@ -10,6 +13,7 @@ class App{
     }
 
     midlewares(){
+        //Fazendo com que o express le informaçoes no formato Json.
         this.server.use(express.json());
     }
 
