@@ -1,0 +1,3 @@
+// Criação do uma nova migrate
+
+// yarn sequelize migration:create --name=create-tasks   

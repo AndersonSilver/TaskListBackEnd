@@ -2,9 +2,10 @@ import Sequelize from 'sequelize';
 import databaseConfig from '../config/database';
 
 import User from '../app/models/User';
+import Task from '../app/models/Task';
 
 // Acessando o models User
-const models = [User];
+const models = [User, Task];
 
 class Database {
 
@@ -18,7 +19,11 @@ class Database {
         this.connection = new Sequelize(databaseConfig);
 
         // percorrendo o model atual e carregando ele com o banco de dados.
-        models.map(model => model.init(this.connection))
+        models
+        .map(model => model.init(this.connection))
+        .map(model => model.associate && model.associate(this.connection.models));
+        // Percorre o model e verifica se tem o metodo associate, se tiver ele vai carregar a associação.
+
     }
 }
 
