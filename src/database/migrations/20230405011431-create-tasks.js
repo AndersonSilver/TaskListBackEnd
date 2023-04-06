@@ -10,7 +10,7 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      tasks: {
+      task: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -48,7 +48,8 @@ module.exports = {
 
 /*
 
-yarn sequelize db:migrate -> Cria uma migrate
+yarn sequelize migration:create --name=create-tasks -> cria uma migrate do zero
+yarn sequelize db:migrate -> Cria uma migrate no banco de dados
 yarn sequelize db:migrate:undo -> apaga a ultima migrate
 yarn sequelize db:migrate:undo:all -> apaga todas migrates
 
